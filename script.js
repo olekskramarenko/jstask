@@ -36,21 +36,21 @@ let allNamesArea = document.querySelector('.names');
 
 allBtnsArea.addEventListener('click', function(evt){
     evt.preventDefault();
-    let target = event.target;
+    let char = event.target.textContent;
     let matches = [];
-    let answers = allNamesArea.querySelectorAll('div');
-    if (answers.length > 0) {
-        answers.forEach(el => el.remove());
+    let length = jsonList.length;
+    let fragment = document.createDocumentFragment();
+    if (allNamesArea.textContent) {
+        allNamesArea.textContent = '';
     }
-    for (let i=0; i< jsonList.length; i++) {
-    if (jsonList[i]['name'][0] == target.textContent) {
-        let newName = document.createElement('div');
-        newName.textContent = jsonList[i]['name'];
-        allNamesArea.appendChild(newName);
+    for (let i=0; i < length; i++) {
+    if (jsonList[i]['name'].startsWith(char)) {
+        fragment.textContent = jsonList[i]['name']+' | ';
+        allNamesArea.appendChild(fragment);
         matches.push(jsonList[i]['name']);
     }     
 }
-    if (matches.length == 0) {
+    if (!matches.length) {
         let notFound = document.createElement('div');
         notFound.textContent = 'No matches found';
         notFound.style.color = 'red';
