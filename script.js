@@ -1,4 +1,3 @@
-
 (async () => {
 let url = 'https://olekskramarenko.github.io/jstask/list.json';
 let response = await fetch(url);
@@ -38,15 +37,17 @@ allBtnsArea.addEventListener('click', function(evt){
     evt.preventDefault();
     let char = event.target.textContent;
     let matches = [];
+    let answers = allNamesArea.querySelectorAll('div');
     let length = jsonList.length;
     let fragment = document.createDocumentFragment();
-    if (allNamesArea.textContent) {
-        allNamesArea.textContent = '';
+    if (answers.length > 0) {
+        answers.forEach(el => el.remove());
     }
     for (let i=0; i < length; i++) {
     if (jsonList[i]['name'].startsWith(char)) {
-        fragment.textContent = jsonList[i]['name']+' | ';
-        allNamesArea.appendChild(fragment);
+        let newName = document.createElement('div');
+        newName.textContent = jsonList[i]['name'];
+        allNamesArea.appendChild(newName);
         matches.push(jsonList[i]['name']);
     }     
 }
@@ -58,4 +59,3 @@ allBtnsArea.addEventListener('click', function(evt){
     }
 });
 })()
-
