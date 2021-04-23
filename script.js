@@ -39,7 +39,6 @@ allBtnsArea.addEventListener('click', function(evt){
     let matches = [];
     let answers = allNamesArea.querySelectorAll('div');
     let length = jsonList.length;
-    let fragment = document.createDocumentFragment();
     if (answers.length > 0) {
         answers.forEach(el => el.remove());
     }
