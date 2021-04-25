@@ -26,15 +26,14 @@
     addLetterToArray();
 
     let buttons = document.querySelectorAll('option');
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].textContent = arrayOfLetters[i]
+    for (let i = 1; i < buttons.length; i++) {
+        buttons[i].textContent = arrayOfLetters[i-1];
     };
 
     let selectElement = document.querySelector('.letters');
     let allNamesArea = document.querySelector('.names');
 
     selectElement.onchange = function () {
-        console.log(this.value);
         let char = this.value;
         let matches = [];
         let answers = allNamesArea.querySelectorAll('div');
