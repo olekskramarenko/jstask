@@ -25,9 +25,9 @@
     }
     addLetterToArray();
 
-    let buttons = document.querySelectorAll('option');
-    for (let i = 1; i < buttons.length; i++) {
-        buttons[i].textContent = arrayOfLetters[i-1];
+    let options = document.querySelectorAll('option');
+    for (let i = 1; i < options.length; i++) {
+        options[i].textContent = arrayOfLetters[i-1];
     };
 
     let selectElement = document.querySelector('.letters');
@@ -41,6 +41,9 @@
         let fragment = document.createDocumentFragment();
         if (answers.length > 0) {
             answers.forEach(el => el.remove());
+        }
+        if ( char === 'Choose a letter') {
+            return
         }
         for (let i = 0; i < length; i++) {
             if (jsonList[i]['name'].startsWith(char)) {
